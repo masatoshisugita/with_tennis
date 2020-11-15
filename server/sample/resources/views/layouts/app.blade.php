@@ -29,13 +29,18 @@
         <div class="collapse navbar-collapse mr-5" id="navigation">
         @if (Route::has('login'))
                     @auth
-                        <p class="navbar-text navbar-right"><a href="{{ url('/home') }}">ホーム</a></p>
+                    <div class="navbar-right">
+                        <p class="navbar-text"><a href="{{ url('/home') }}">ホーム</a></p>
+                    </div>
                     @else
-                        <p class="navbar-text navbar-right"><a href="{{ route('login') }}">ログイン</a></p>
+                    <div class="navbar-right">
+
+                        <p class="navbar-text"><a href="{{ route('login') }}">ログイン</a></p>
 
                         @if (Route::has('register'))
-                            <p class="navbar-text navbar-right"><a href="{{ route('register') }}">登録</a></p>
+                            <p class="navbar-text"><a href="{{ route('register') }}">登録</a></p>
                         @endif
+                    </div>
                     @endauth
             @endif
         </div>
