@@ -29,9 +29,19 @@
         <div class="collapse navbar-collapse mr-5" id="navigation">
         @if (Route::has('login'))
                     @auth
+                    
                     <div class="navbar-right">
                         <p class="navbar-text"><a href="{{ url('/home') }}">ホーム</a></p>
                     </div>
+                    <div class="navbar-right">
+                        <a href={{ route('logout') }} class="navbar-text" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            ログアウト
+                        </a>
+                        <form id='logout-form' action={{ route('logout')}} method="POST">
+                        @csrf
+                    </div>
+                    
                     @else
                     <div class="navbar-right">
 
