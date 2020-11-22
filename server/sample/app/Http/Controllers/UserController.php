@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Ivent;
+use App\Http\Controllers\Hash;
 
 class UserController extends Controller
 {
@@ -63,7 +65,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('user.edit', compact('user'));
+        if(Auth::user()->id === $user->id){
+            return view('user.edit', compact('user')); 
+        }else{
+            return back();
+        }          
     }
 
     /**
@@ -75,13 +81,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'name' =>['required'],
+            'email' => ['required','unique'],
+            'password' => ['required','min:8']    
+        ]);
+
         $update = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->get('new-password'))
         ];
-        User::where('id', $id)->update($update);
-        return back()->with('success', '編集完了しました');
+        $password = $request->password;
+        $password_confirmation = $request->password_confirmation;
+        if($password === $password_confirmation){
+            User::where('id', $id)->update($update);
+            return back()->with('success', '編集に成功しました');
+        }else{
+            return back()->with('danger', '編集に失敗しました');
+        }
+        
     }
 
     /**
@@ -93,6 +112,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::where('id', $id)->delete();
-        return redirect()->route('user.index')->with('success', '削除完了しました');
+        return redirect()->route('login')->with('success', '削除完了しました');
     }
 }

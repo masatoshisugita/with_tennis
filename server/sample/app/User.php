@@ -40,4 +40,12 @@ class User extends Authenticatable
 
         return $this->hasMany(Ivent::class);
     }
+
+    protected static function boot() 
+    {
+      parent::boot();
+      self::deleting(function ($user) {
+        $user->ivents()->delete();
+      });
+    }
 }
