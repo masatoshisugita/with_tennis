@@ -18,6 +18,11 @@ services:
     depends_on:
     - php
 
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+      - 4444:4444
+
   db:
     image: mysql:5.7
     container_name: db-host
