@@ -44,14 +44,28 @@
         </form>
         @endif
       </div>
+
+      <div class="row text-center">
+      <form method="POST" action="/ivents/{{ $ivent->id }}/comments">
+          @csrf
+          <label for="user_id"></label>
+          <input type="hidden" name="user_id" value="user_id">
+          <label for="ivent_id"></label>
+          <input type="hidden" name="ivent_id" value="ivent_id">
+          <label for="content" class="block">コメント</label>
+          <textarea name="content" id="" cols="100" rows="8"></textarea>
+          <button type="submit" class="btn btn-success">コメントする</button>
+        </form>
+      </div>
+
+      {{-- <div>{{ $ivent->comments->content }}</div> --}}
+
       
   </div>
 </div>
+
 <div id="map" style="height:500px; width:1000px; margin: 0 auto;"></div>
-
 @endsection
-
-
 
 <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyDPWOBSYswyNyMPG49fGx-b4phi1VLmIYs&callback=initMap" async defer></script>
 <script>
