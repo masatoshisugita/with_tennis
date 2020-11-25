@@ -19,3 +19,6 @@ Auth::routes();
 Route::resource('user', 'UserController');
 Route::resource('ivent', 'IventController');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/ivents/{ivent}/comments', 'CommentController@store');
+Route::post('/ivents/{ivent}/comments/{comment}', 'CommentController@destroy');
