@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $fillable = ['user_id', 'ivent_id', 'content'];
-    
-    public function Ivent()
+    protected $fillable = ['user_id', 'event_id', 'content'];
+
+    public function Event()
     {
-      return $this->belongsTo('App\Ivent');
+      return $this->belongsTo(Event::class);
     }
 
     public function User()

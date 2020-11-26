@@ -36,20 +36,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function ivents(){
+    public function events(){
 
-        return $this->hasMany(Ivent::class);
+        return $this->hasMany(Event::class);
     }
     public function comments()
     {
-      return $this->hasMany('Comment::class');
+      return $this->hasMany(Comment::class);
     }
 
     protected static function boot() 
     {
       parent::boot();
       self::deleting(function ($user) {
-        $user->ivents()->delete();
+        $user->events()->delete();
       });
     }
 }

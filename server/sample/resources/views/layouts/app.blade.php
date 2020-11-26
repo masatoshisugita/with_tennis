@@ -25,7 +25,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-default">
-          <a class="navbar-brand" href="{{ url('/ivent') }}">With_Tennis</a>
+          <a class="navbar-brand" href="{{ url('/event') }}">With_Tennis</a>
         <div class="collapse navbar-collapse mr-5" id="navigation">
         @if (Route::has('login'))
                     @auth
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="navbar-right">
-                        <p class="navbar-text"><a href="{{ url('/ivent/create') }}">イベント投稿</a></p>
+                        <p class="navbar-text"><a href="{{ url('/event/create') }}">イベント投稿</a></p>
                     </div>
                     <div class="navbar-right">
                         <p class="navbar-text"><a href="{{ route('user.show', Auth::user()->id)  }}">{{ Auth::user()->name }}</a></p>

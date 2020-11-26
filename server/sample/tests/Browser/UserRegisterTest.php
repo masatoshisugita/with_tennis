@@ -25,7 +25,7 @@ class UserRegisterTest extends DuskTestCase
                 ->type('#password', $user->password)
                 ->type('#password-confirm', $user->password)
                 ->press('登録')
-                ->assertPathIs('/ivent');
+                ->assertPathIs('/event');
         });
         
     }

@@ -29,7 +29,7 @@ class LoginTest extends DuskTestCase
                 ->type('#email', $user->email)
                 ->type('#password', $password)
                 ->press('ログインする')
-                ->assertPathIs('/ivent');
+                ->assertPathIs('/event');
         });
     }
 }
