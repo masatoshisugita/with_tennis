@@ -6,14 +6,14 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 use App\User;
-use App\Ivent;
-use App\Policies\Iventpolicy;
+use App\Event;
+use App\Policies\Eventpolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
   protected $policies = [
     // 'App\Model' => 'App\Policies\ModelPolicy',
-    Ivent::class => Iventpolicy::class,
+    Event::class => Eventpolicy::class,
   ];
 
 /**
@@ -27,8 +27,8 @@ class AuthServiceProvider extends ServiceProvider
 
   }
   
-  public function update(User $user, Ivent $ivent)
+  public function update(User $user, Event $event)
   {
-    return $user->id === $ivent->user_id;
+    return $user->id === $event->user_id;
   }
 }

@@ -2,16 +2,16 @@
 
 namespace App\Policies;
 
-use App\Ivent;
+use App\Event;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class IventPolicy
+class EventPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any ivents.
+     * Determine whether the user can view any events.
      *
      * @param  \App\User  $user
      * @return mixed
@@ -22,19 +22,19 @@ class IventPolicy
     }
 
     /**
-     * Determine whether the user can view the ivent.
+     * Determine whether the user can view the event.
      *
      * @param  \App\User  $user
-     * @param  \App\Ivent  $ivent
+     * @param  \App\Event  $event
      * @return mixed
      */
-    public function view(User $user, Ivent $ivent)
+    public function view(User $user, Event $event)
     {
         //
     }
 
     /**
-     * Determine whether the user can create ivents.
+     * Determine whether the user can create events.
      *
      * @param  \App\User  $user
      * @return mixed
@@ -45,49 +45,49 @@ class IventPolicy
     }
 
     /**
-     * Determine whether the user can update the ivent.
+     * Determine whether the user can update the event.
      *
      * @param  \App\User  $user
-     * @param  \App\Ivent  $ivent
+     * @param  \App\Event  $event
      * @return mixed
      */
-    public function update(User $user, Ivent $ivent)
+    public function update(User $user, Event $event)
     {
         //
     }
 
     /**
-     * Determine whether the user can delete the ivent.
+     * Determine whether the user can delete the event.
      *
      * @param  \App\User  $user
-     * @param  \App\Ivent  $ivent
+     * @param  \App\Event  $event
      * @return mixed
      */
-    public function delete(User $user, Ivent $ivent)
+    public function delete(User $user, Event $event)
     {
         //
     }
 
     /**
-     * Determine whether the user can restore the ivent.
+     * Determine whether the user can restore the event.
      *
      * @param  \App\User  $user
-     * @param  \App\Ivent  $ivent
+     * @param  \App\Event  $event
      * @return mixed
      */
-    public function restore(User $user, Ivent $ivent)
+    public function restore(User $user, Event $event)
     {
         //
     }
 
     /**
-     * Determine whether the user can permanently delete the ivent.
+     * Determine whether the user can permanently delete the event.
      *
      * @param  \App\User  $user
-     * @param  \App\Ivent  $ivent
+     * @param  \App\Event  $event
      * @return mixed
      */
-    public function forceDelete(User $user, Ivent $ivent)
+    public function forceDelete(User $user, Event $event)
     {
         //
     }

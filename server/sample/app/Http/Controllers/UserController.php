@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Ivent;
+use App\Event;
 use App\Http\Controllers\Hash;
 
 class UserController extends Controller

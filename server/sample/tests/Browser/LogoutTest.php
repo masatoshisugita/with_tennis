@@ -19,7 +19,7 @@ class LogoutTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $user = factory(User::class,'user1')->create();
             $this->browse(function (Browser $browser) use ($user){
-                $browser->loginAs($user)->visit('/ivent')
+                $browser->loginAs($user)->visit('/event')
                     ->assertSee('ログアウト')
                     ->clickLink('ログアウト')
                     ->assertPathIs('/login');

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class IventTableSeeder extends Seeder
+class EventTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class IventTableSeeder extends Seeder
      */
     public function run()
     {
-        $ivents = [
+        $events = [
              ['user_id' => 1,
              'title' => '一緒にテニスをしましょう',
              'place' => '東京都港区',
@@ -35,8 +35,8 @@ class IventTableSeeder extends Seeder
         ];
             
 
-        foreach($ivents as $ivent) {
-            \App\Ivent::create($ivent);
+        foreach($events as $event) {
+            \App\Event::create($event);
         }
     }
 }

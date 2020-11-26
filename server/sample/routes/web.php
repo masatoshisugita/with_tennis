@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::resource('user', 'UserController');
-Route::resource('ivent', 'IventController');
+Route::resource('event', 'EventController');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/ivents/{ivent}/comments', 'CommentController@store');
-Route::post('/ivents/{ivent}/comments/{comment}', 'CommentController@destroy');
+Route::post('/events/{event}/comments', 'CommentController@store');
+Route::delete('/events/{event}/comments/{comment}', 'CommentController@destroy');
