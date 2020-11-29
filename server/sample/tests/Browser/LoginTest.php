@@ -4,12 +4,15 @@ namespace Tests\Browser;
 
 use App\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class LoginTest extends DuskTestCase
 {
+    // use DatabaseMigrations;
+    use RefreshDatabase;
     /**
      * A Dusk test example.
      *
@@ -17,19 +20,26 @@ class LoginTest extends DuskTestCase
      */
     public function testLogin()
     {
-        $password = 'Password@1234';
+        $user = factory(User::class)->create();
 
-        $user = factory(User::class,'user1')->create([
-            'password' => Hash::make($password),
-            'remember_token' => null
-        ]);
-
-        $this->browse(function (Browser $browser) use ($user, $password) {
+        $this->browse(function (Browser $browser)use($user){
             $browser->visit('/login')
-                ->type('#email', $user->email)
-                ->type('#password', $password)
+                ->type('email',$user->email)
+                ->screenshot('email')
+                ->type('password',$user->password )
+                ->screenshot('password')
                 ->press('ログインする')
                 ->assertPathIs('/event');
         });
+    }
+    public function testLogout()
+    {
+            $this->browse(function (Browser $browser){
+                $browser->visit('/event')
+                    ->assertSee('ログアウト')
+                    ->clickLink('ログアウト')
+                    ->assertPathIs('/login');
+            });
+
     }
 }

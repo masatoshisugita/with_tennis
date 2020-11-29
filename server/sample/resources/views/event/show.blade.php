@@ -69,7 +69,7 @@
           <label for="event_id"></label>
           <input type="hidden" name="event_id" value="event_id">
           <p><label for="content" class="block">コメント</label></p>
-          <p><textarea name="content" id="" cols="100" rows="3"></textarea></p>
+          <p><textarea name="content" value="content" id="content" cols="100" rows="3"></textarea></p>
           <button type="submit" class="btn btn-success text-center">コメントする</button>
           <hr>
         </form>
@@ -83,7 +83,7 @@
             <form method="POST" action="/events/{{ $event->id }}/comments/{{ $comment->id }}">
               @csrf
               @method('DELETE')
-              <input type="submit" name="" value="削除" class="btn btn-danger">
+              <input type="submit" value="削除" class="btn btn-danger">
             </form>
           @endif
           <hr>      

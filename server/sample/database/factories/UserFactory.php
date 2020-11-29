@@ -18,10 +18,11 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-    static $password;
+    // static $password;
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => 'password',
+        'email_verified_at' => $faker->dateTime(),
     ];
-},'user1');
+});
