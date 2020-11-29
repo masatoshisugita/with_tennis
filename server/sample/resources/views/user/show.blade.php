@@ -2,6 +2,12 @@
 
 @section('content')
 
+@if ($message = Session::get('success'))
+  <div class="alert alert-success text-center" role="alert">{{ $message }}</div>
+@endif
+@if ($message = Session::get('danger'))
+  <div class="alert alert-danger text-center" role="alert">{{ $message }}</div>
+@endif
 <h1 class="text-center">詳細画面</h1>
 
 <div class="container">
@@ -35,7 +41,7 @@
         <form action="{{ route('user.destroy', $user->id)}}" method="POST">
           @csrf
           @method('DELETE')
-          <input type="submit" name="" value="削除" class="btn btn-danger">
+          <input type="submit" value="削除" class="btn btn-danger" id="user_destroy">
         </form>
       </div>
       

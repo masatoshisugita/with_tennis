@@ -10,16 +10,21 @@ use App\Comment;
 
 class EventController extends Controller
 {   
-    public function index()
-    {
-        if(Auth::check()){
-            $events = Event::all();
-            return view('event.index', compact('events'));
+    public function index(Request $request)
+    {   
+        if (Auth::check()){
+            $search = $request->input('search');
+            if (!empty($search)){
+                $events = Event::where('title','like','%'.$search.'%')->orderBy('created_at','desc')->get();
+            }else{
+                $events = Event::orderBy('created_at','desc')->get();
+            }
+            return view('event.index',compact('events'));
         }else{
             return redirect('/login');
-        }
-        
+        }        
     }
+    
     public function create()
     {    
         return view('event.create');

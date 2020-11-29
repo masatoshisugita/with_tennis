@@ -22,7 +22,7 @@ use Illuminate\Support\Str;
 $factory->define(Event::class, function (Faker $faker) {
     return [
         'user_id' => function() {
-          return factory(User::class)->create()->id;
+          return factory(User::class,'user1')->create()->id;
         },
         'title' => $faker->title,
         'place' => $faker->address,

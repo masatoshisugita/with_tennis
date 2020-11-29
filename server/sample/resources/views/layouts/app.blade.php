@@ -42,7 +42,7 @@
                         <p class="navbar-text"><a href="{{ url('/event/create') }}">イベント投稿</a></p>
                     </div>
                     <div class="navbar-right">
-                        <p class="navbar-text"><a href="{{ route('user.show', Auth::user()->id)  }}">{{ Auth::user()->name }}</a></p>
+                        <p class="navbar-text"><a href="{{ route('user.show', Auth::user()->id)  }}" id="user_name">{{ Auth::user()->name }}</a></p>
                     </div>
                     
                     @else

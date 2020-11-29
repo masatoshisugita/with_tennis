@@ -83,7 +83,7 @@ class UserController extends Controller
     {
         $validatedData = $request->validate([
             'name' =>['required'],
-            'email' => ['required','unique'],
+            'email' => ['required','unique:users'],
             'password' => ['required','min:8']    
         ]);
 
@@ -96,9 +96,10 @@ class UserController extends Controller
         $password_confirmation = $request->password_confirmation;
         if($password === $password_confirmation){
             User::where('id', $id)->update($update);
-            return back()->with('success', '編集に成功しました');
+            return redirect()->action('UserController@show', ['user' => User::findOrFail($id)])
+            ->with('success', 'ユーザー編集に成功しました');
         }else{
-            return back()->with('danger', '編集に失敗しました');
+            return back()->with('danger', 'ユーザー編集に失敗しました');
         }
         
     }

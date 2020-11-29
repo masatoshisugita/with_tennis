@@ -12,6 +12,17 @@
 
 <div class="container">
   <div class="row">
+    <form action="{{ route('event.index') }}" method="post">  
+      {{ csrf_field()}}  
+      {{method_field('get')}}
+      <input type="search" name="search" placeholder="イベント名を入力してください">
+      <input type="submit" value="検索">
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
     <table class="table col-md-10">
       <tr>
           <th>イベント名</th>
@@ -22,8 +33,8 @@
       @foreach ($events as $event)
       <tr>
           <td>{{ $event->title }}</td>
-          <th>{{$event->place}}</th>
-          <th>{{$event->date}}</th>
+          <th>{{ $event->place }}</th>
+          <th>{{ $event->date }}</th>
           <th><a href="{{ route('event.show',$event->id)}}" class="btn btn-success">詳細</a></th>
       </tr>
       @endforeach
