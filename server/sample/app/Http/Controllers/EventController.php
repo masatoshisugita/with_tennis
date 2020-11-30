@@ -83,7 +83,7 @@ class EventController extends Controller
         ];
         
         Event::where('id', $id)->update($update);
-        return back()->with('success', 'イベントの編集を完了しました');
+        return redirect('/event')->with('success', 'イベントの編集を完了しました');
     }
     public function destroy(Request $request,$id)
     {

@@ -22,11 +22,11 @@ use Illuminate\Support\Str;
 $factory->define(Event::class, function (Faker $faker) {
     return [
         'user_id' => function() {
-          return factory(User::class,'user1')->create()->id;
+          return factory(App\User::class)->create()->id;
         },
         'title' => $faker->title,
         'place' => $faker->address,
         'date' => $faker->dateTime,
         'detail' => $faker->sentence,
     ];
-},'event1');
+});
