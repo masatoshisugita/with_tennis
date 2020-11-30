@@ -12,7 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class LoginTest extends DuskTestCase
 {
     // use DatabaseMigrations;
-    use RefreshDatabase;
+    //use RefreshDatabase;
     /**
      * A Dusk test example.
      *
@@ -20,26 +20,29 @@ class LoginTest extends DuskTestCase
      */
     public function testLogin()
     {
-        $user = factory(User::class)->create();
+        $password = 'password1234';
 
-        $this->browse(function (Browser $browser)use($user){
+        $user = factory(User::class)->create([
+            'password' => Hash::make($password),
+            'remember_token' => null
+        ]);
+
+        $this->browse(function (Browser $browser)use($user,$password){
             $browser->visit('/login')
-                ->type('email',$user->email)
-                ->screenshot('email')
-                ->type('password',$user->password )
-                ->screenshot('password')
+                ->type('#email',$user->email)
+                ->type('#password',$password)
                 ->press('ログインする')
                 ->assertPathIs('/event');
         });
     }
     public function testLogout()
     {
-            $this->browse(function (Browser $browser){
-                $browser->visit('/event')
-                    ->assertSee('ログアウト')
-                    ->clickLink('ログアウト')
-                    ->assertPathIs('/login');
-            });
+        $this->browse(function (Browser $browser){
+            $browser->visit('/event')
+                ->assertSee('ログアウト')
+                ->clickLink('ログアウト')
+                ->assertPathIs('/login');
+        });
 
     }
 }

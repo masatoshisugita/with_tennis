@@ -15,7 +15,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class CommentCreateTest extends DuskTestCase
 {
     // use DatabaseMigrations;
-    use RefreshDatabase;
+    //use RefreshDatabase;
     /**
      * A Dusk test example.
      *
@@ -24,14 +24,25 @@ class CommentCreateTest extends DuskTestCase
     public function test_comment_create()
     {
         $user = factory(User::class)->create();
-        $event = factory(Event::class,'event1')->create();
-        $comment = factory(Comment::class,'comment1')->make();
+        $event = factory(Event::class)->create();
 
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit($user)->visit('/event')
+            $browser->loginAs($user)->visit('/event')
                     ->clickLink("詳細")
                     ->type('#content','参加します')
                     ->press('コメントする')
+                    ->assertSee('詳細画面');
+        });
+    }
+    public function test_comment_destroy()
+    {
+        // $user = factory(User::class)->create();
+        // $event = factory(Event::class)->create();
+
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/event')
+                    ->clickLink("詳細")
+                    ->press('削除')
                     ->assertSee('詳細画面');
         });
     }

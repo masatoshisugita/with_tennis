@@ -12,7 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class UserDestroyTest extends DuskTestCase
 {
     // use DatabaseMigrations;
-    use RefreshDatabase;
+    //use RefreshDatabase;
     /**
      * A Dusk test example.
      *
@@ -46,7 +46,7 @@ class UserDestroyTest extends DuskTestCase
                     ->type('#password', 'password')
                     ->type('#password-confirm', 'password')
                     ->press('編集する')
-                    ->assertSee('name_update');            
+                    ->assertSee('name_update');
         });
     }
     public function test_user_destory()

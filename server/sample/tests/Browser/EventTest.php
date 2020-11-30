@@ -14,7 +14,7 @@ class EventUpdateTest extends DuskTestCase
 {
     
     // use DatabaseMigrations;
-    use RefreshDatabase;
+    //use RefreshDatabase;
     /**
      * A Dusk test example.
      *
@@ -36,10 +36,11 @@ class EventUpdateTest extends DuskTestCase
     }
     public function test_event_update()
     {
-        $user = factory(User::class)->create();
+        //$user = factory(User::class)->create();
 
-        $this->browse(function (Browser $browser) use($user) {
-            $browser->loginAs($user)->visit('/event')
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/event')
+                    ->screenshot('aaa')
                     ->clickLink("詳細")
                     ->clickLink("編集")
                     ->type('#title', 'ダブルスしましょう')
@@ -48,6 +49,17 @@ class EventUpdateTest extends DuskTestCase
                     ->type('#detail', '初心者大歓迎です！')
                     ->press('編集する')                 
                     ->assertSee('ダブルスしましょう');
+        });
+    }
+    public function test_event_destroy()
+    {
+        //$user = factory(User::class)->create();
+
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/event')
+                    ->clickLink("詳細")
+                    ->press("削除")
+                    ->assertPathIs('/event');
         });
     }
 }
