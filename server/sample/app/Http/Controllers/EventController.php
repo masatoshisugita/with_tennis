@@ -10,19 +10,20 @@ use App\Comment;
 
 class EventController extends Controller
 {   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {   
-        if (Auth::check()){
-            $search = $request->input('search');
-            if (!empty($search)){
-                $events = Event::where('title','like','%'.$search.'%')->orderBy('created_at','desc')->get();
-            }else{
-                $events = Event::orderBy('created_at','desc')->get();
-            }
-            return view('event.index',compact('events'));
+        $search = $request->input('search');
+        if (!empty($search)){
+            $events = Event::where('title','like','%'.$search.'%')->orderBy('created_at','desc')->get();
         }else{
-            return redirect('/login');
-        }        
+            $events = Event::orderBy('created_at','desc')->get();
+        }
+        return view('event.index',compact('events'));           
     }
     
     public function create()
@@ -85,7 +86,7 @@ class EventController extends Controller
         Event::where('id', $id)->update($update);
         return redirect('/event')->with('success', 'イベントの編集を完了しました');
     }
-    public function destroy(Request $request,$id)
+    public function destroy($id)
     {
         Event::where('id', $id)->delete();
         return redirect()->route('event.index')->with('danger', 'イベントの削除を完了しました');

@@ -6,15 +6,9 @@ use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
 use App\User;
-use App\Event;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EventUpdateTest extends DuskTestCase
 {
-    
-    // use DatabaseMigrations;
-    //use RefreshDatabase;
     /**
      * A Dusk test example.
      *
@@ -36,8 +30,6 @@ class EventUpdateTest extends DuskTestCase
     }
     public function test_event_update()
     {
-        //$user = factory(User::class)->create();
-
         $this->browse(function (Browser $browser) {
             $browser->visit('/event')
                     ->screenshot('aaa')
@@ -53,8 +45,6 @@ class EventUpdateTest extends DuskTestCase
     }
     public function test_event_destroy()
     {
-        //$user = factory(User::class)->create();
-
         $this->browse(function (Browser $browser) {
             $browser->visit('/event')
                     ->clickLink("詳細")
