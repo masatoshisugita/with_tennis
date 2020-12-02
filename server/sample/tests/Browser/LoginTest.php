@@ -6,13 +6,10 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
 class LoginTest extends DuskTestCase
 {
-    // use DatabaseMigrations;
-    //use RefreshDatabase;
     /**
      * A Dusk test example.
      *

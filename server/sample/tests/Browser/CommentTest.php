@@ -7,15 +7,9 @@ use Tests\DuskTestCase;
 
 use App\User;
 use App\Event;
-use App\Comment;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CommentCreateTest extends DuskTestCase
 {
-    // use DatabaseMigrations;
-    //use RefreshDatabase;
     /**
      * A Dusk test example.
      *
@@ -36,9 +30,6 @@ class CommentCreateTest extends DuskTestCase
     }
     public function test_comment_destroy()
     {
-        // $user = factory(User::class)->create();
-        // $event = factory(Event::class)->create();
-
         $this->browse(function (Browser $browser) {
             $browser->visit('/event')
                     ->clickLink("詳細")
