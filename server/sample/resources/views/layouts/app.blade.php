@@ -25,11 +25,12 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-default">
-          <a class="navbar-brand" href="{{ url('/event') }}">With_Tennis</a>
-        <div class="collapse navbar-collapse mr-5" id="navigation">
-        @if (Route::has('login'))
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ url('/event') }}">With_Tennis</a>
+                </div>
+                @if (Route::has('login'))
                     @auth
-                   
                     <div class="navbar-right">
                         <a href={{ route('logout') }} class="navbar-text" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
@@ -37,28 +38,21 @@
                         </a>
                         <form id='logout-form' action={{ route('logout')}} method="POST">@csrf</form>
                     </div>
-
-                    <div class="navbar-right">
-                        <p class="navbar-text"><a href="{{ url('/event/create') }}">イベント投稿</a></p>
-                    </div>
-                    <div class="navbar-right">
-                        <p class="navbar-text"><a href="{{ route('user.show', Auth::user()->id)  }}" id="user_name">{{ Auth::user()->name }}</a></p>
-                    </div>
-                    
-                    @else
-                    <div class="navbar-right">
-
-                        <p class="navbar-text"><a href="{{ route('login') }}">ログイン</a></p>
-
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url('/event/create') }}">イベント投稿</a></li>
+                        <li><a href="{{ route('user.show', Auth::user()->id) }}" id="user_name">{{ Auth::user()->name }}</a></li>
+                    </ul>
+                @else
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ route('login') }}">ログイン</a></li>
                         @if (Route::has('register'))
-                            <p class="navbar-text"><a href="{{ route('register') }}">登録</a></p>
+                            <li><a href="{{ route('register') }}">登録</a></li>
                         @endif
-                    </div>
+                    </ul>
                     @endauth
-            @endif
-        </div>
-      </div>
-    </nav>
+                @endif
+            </div>
+        </nav>
 
         <main class="mt-4">
             @yield('content')
