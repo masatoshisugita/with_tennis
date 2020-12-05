@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
 use App\Event;
 use App\Comment;
 
@@ -14,7 +13,7 @@ class CommentController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function store(Request $request, $id)
     {
         $validatedData = $request->validate([

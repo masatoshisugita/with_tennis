@@ -19,19 +19,19 @@
             <td>{{ $user->id }}</td>
           </tr>
           <tr>
-            <td>name</td>
+            <td>名前</td>
             <td>{{ $user->name}}</td>
           </tr>
           <tr>
-            <td>email</td>
+            <td>メールアドレス</td>
             <td>{{ $user->email }}</td>
           </tr>
           <tr>
-            <td>created_at</td>
+            <td>登録日時</td>
             <td>{{ $user->created_at }}</td>
           </tr>
           <tr>
-            <td>updated_at</td>
+            <td>更新日時</td>
             <td>{{ $user->updated_at }}</td>
           </tr>
         </tbody>

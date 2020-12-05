@@ -37,16 +37,6 @@
                         <input id="email" type="email" value="{{ $user->email }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                       </div>
 
-                      <div class="form-group text-center">
-                        <label for="password">パスワード</label>                          
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                      </div>
-                     
-                      <div class="form-group text-center">
-                        <label for="password-confirm">パスワード（確認用）</label>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                      </div>
-                      
                       <div class="form-group text-center">                         
                         <button type="submit" class="btn btn-primary">
                             編集する
