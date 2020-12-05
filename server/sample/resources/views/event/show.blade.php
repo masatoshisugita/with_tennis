@@ -77,7 +77,7 @@
 
       <div class="row">
         @foreach ($comments as $comment)
-          <h4>名前：{{ $comment->event->user->name }}</h4>
+          <h4>名前：{{ $comment->user->name }}</h4>
           <h4>内容：{{ $comment->content }}</h4>
           @if (Auth::user()->id == $comment->user_id)
             <form method="POST" action="/events/{{ $event->id }}/comments/{{ $comment->id }}">
