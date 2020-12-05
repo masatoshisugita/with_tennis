@@ -37,8 +37,6 @@ class UserDestroyTest extends DuskTestCase
                     ->clickLink('編集')
                     ->type('#name', 'name_update')
                     ->type('#email', 'example123456@com')
-                    ->type('#password', 'password')
-                    ->type('#password-confirm', 'password')
                     ->press('編集する')
                     ->assertSee('name_update');
         });

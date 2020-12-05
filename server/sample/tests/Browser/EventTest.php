@@ -32,7 +32,6 @@ class EventUpdateTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/event')
-                    ->screenshot('aaa')
                     ->clickLink("詳細")
                     ->clickLink("編集")
                     ->type('#title', 'ダブルスしましょう')
