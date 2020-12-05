@@ -11,10 +11,11 @@
 |
 */
 
-// use Illuminate\Routing\Route;
+ //use Illuminate\Routing\Route;
+ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/event');
 });
 
 Auth::routes();

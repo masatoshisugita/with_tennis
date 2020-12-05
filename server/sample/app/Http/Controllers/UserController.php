@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Event;
-use App\Http\Controllers\Hash;
+
 
 class UserController extends Controller
 {
@@ -86,26 +85,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' =>['required'],
-            'email' => ['required','unique:users'],
-            'password' => ['required','min:8']    
+            'name' =>'required',
+            'email' =>  'unique:users,email,'.$request -> email.',email',   
         ]);
 
         $update = [
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->get('new-password'))
         ];
-        $password = $request->password;
-        $password_confirmation = $request->password_confirmation;
-        if($password === $password_confirmation){
-            User::where('id', $id)->update($update);
-            return redirect()->action('UserController@show', ['user' => User::findOrFail($id)])
-            ->with('success', 'ユーザー編集に成功しました');
-        }else{
-            return back()->with('danger', '編集に失敗しました');
-        }
-        
+        User::where('id', $id)->update($update);
+        return redirect()->action('UserController@show', ['user' => User::findOrFail($id)])
+        ->with('success', 'ユーザー編集に成功しました');
     }
 
     /**
@@ -119,4 +109,5 @@ class UserController extends Controller
         User::where('id', $id)->delete();
         return redirect()->route('login')->with('success', '削除完了しました');
     }
+    
 }
